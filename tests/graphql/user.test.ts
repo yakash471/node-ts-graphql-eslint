@@ -22,7 +22,7 @@ describe('User Model', () => {
 
   it('should throw error if email is missing', async () => {
     const invalidUser = new UserModel({ name: 'Jane Doe' });
-    
+
     await expect(invalidUser.save()).rejects.toThrow();
   });
 });

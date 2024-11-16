@@ -37,8 +37,12 @@ describe('User Model', () => {
 
     // Mock save to reject if validation fails (e.g. email is missing)
     const mockSave = UserModel.prototype.save as jest.Mock;
-    mockSave.mockRejectedValue(new Error('Validation Error: Email is required'));
+    mockSave.mockRejectedValue(
+      new Error('Validation Error: Email is required'),
+    );
 
-    await expect(invalidUser.save()).rejects.toThrow('Validation Error: Email is required');
+    await expect(invalidUser.save()).rejects.toThrow(
+      'Validation Error: Email is required',
+    );
   });
 });

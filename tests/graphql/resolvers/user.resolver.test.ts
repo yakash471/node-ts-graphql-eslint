@@ -25,7 +25,7 @@ describe('User Resolvers', () => {
   it('should fetch all users', async () => {
     const mockUsers = [
       { _id: '1', name: 'John Doe', email: 'john@example.com' },
-      { _id: '2', name: 'Jane Doe', email: 'jane@example.com' }
+      { _id: '2', name: 'Jane Doe', email: 'jane@example.com' },
     ];
 
     // Mock the find method to return the mock data
@@ -52,21 +52,25 @@ describe('User Resolvers', () => {
     mockedSave.mockResolvedValue(mockUser);
     const result = await userResolvers.Mutation.createUser(null, {
       name: 'Alice',
-      email: 'alice@example.com'
+      email: 'alice@example.com',
     });
 
     expect(result).toEqual(mockUser);
   });
 
   it('should update a user', async () => {
-    const updatedUser = { _id: '1', name: 'John Updated', email: 'john.updated@example.com' };
+    const updatedUser = {
+      _id: '1',
+      name: 'John Updated',
+      email: 'john.updated@example.com',
+    };
 
     // Mock findByIdAndUpdate method
     mockedFindByIdAndUpdate.mockResolvedValue(updatedUser);
     const result = await userResolvers.Mutation.updateUser(null, {
       id: '1',
       name: 'John Updated',
-      email: 'john.updated@example.com'
+      email: 'john.updated@example.com',
     });
 
     expect(result).toEqual(updatedUser);
@@ -77,7 +81,9 @@ describe('User Resolvers', () => {
 
     // Mock findByIdAndDelete method
     mockedFindByIdAndDelete.mockResolvedValue(true);
-    const result = await userResolvers.Mutation.deleteUser(null, { id: userId });
+    const result = await userResolvers.Mutation.deleteUser(null, {
+      id: userId,
+    });
 
     expect(result).toBe(`User with ID ${userId} deleted`);
   });

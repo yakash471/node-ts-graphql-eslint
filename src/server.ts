@@ -30,9 +30,9 @@ const startServer = async () => {
       '/graphql',
       cors({
         origin: '*',
-      }), 
+      }),
       express.json(),
-      expressMiddleware(server)
+      expressMiddleware(server),
     );
 
     // Start the Express server
@@ -47,4 +47,4 @@ const startServer = async () => {
 
 startServer();
 
-export { app };  
+export { app };
